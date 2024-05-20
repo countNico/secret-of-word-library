@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Othello</title>
+        <link href="total/style/style.css" rel="stylesheet" />
+        <link href="total/style/fonts.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div id="layout_fitter">
+            <div id="othello">
+                <div id="game_setting">
+                    <div id="rules">
+                        <h3>قوانین بازی راز کتابخانه:</h3>
+                        <p>بر اساس هرکدوم از فلش کارت هایی که نشون داده میشه، کلمه مورد نظر رو بسازید.</p>
+                        <p>برای ساخت کلمه باید چهار پازل مخصوص را بر روی صفحه بازی طوری قرار دهید تا فقط حروف اون کلمه نمایش داده شوند.</p>
+                        <p>تذکر: هر یک از 4 پازل بازی دارای شکل مخصوص به خود میباشند و شما باید با جابجا کردن انها در صفحه بازی به جواب صحیح برسید.</p>
+                        <p>برای این کار، پازل مد نظر را از سمت چپ انتخاب کرده و در زمین بازی مد نظر کلیک کنید. برای برای چرخاندن پازل فقط یک بار روی ان کلیک کنید. برای برداشتن پازل از صفحه بازی تنها روی اون کلیک کنید و نگه دارید.</p>
+                        <p>بر روی صفحه بازی 9 جای خالی در بین حیوانات وجود دارد، پس زمان که در یک مسئله به شما گفته می شود که یک کلمه 5 حرفی پیدا کنید، باید قطعات را بر روی صفحه طوری قرار دهید که 4 قسمت خالی صفحه نمایش داده شود.</p>
+                    </div>
+                    <div id="save_setting" onclick="save_data()">شروع بازی</div>
+                </div>
+                <div id="game_table">
+                    <div class="table_plan" onmousedown="plan_mouse_down(1)" onmouseup="plan_mouse_up(1)" onmouseleave="plan_mouse_leave(1)"></div>
+                    <div class="table_plan" onmousedown="plan_mouse_down(2)" onmouseup="plan_mouse_up(2)" onmouseleave="plan_mouse_leave(2)"></div>
+                    <div class="table_plan" onmousedown="plan_mouse_down(3)" onmouseup="plan_mouse_up(3)" onmouseleave="plan_mouse_leave(3)"></div>
+                    <div class="table_plan" onmousedown="plan_mouse_down(4)" onmouseup="plan_mouse_up(4)" onmouseleave="plan_mouse_leave(4)"></div>
+                </div>
+                <div id="game_info">
+                    <div class="info_box"">
+                        <p>دور :</p>
+                        <p id="match_number">1</p>
+                    </div>
+                    <div class="pazzel_box">
+                        <div class="pazzel_Item" onclick="select_pazzel(1)"></div>
+                        <div class="pazzel_Item" onclick="select_pazzel(2)"></div>
+                        <div class="pazzel_Item" onclick="select_pazzel(3)"></div>
+                        <div class="pazzel_Item" onclick="select_pazzel(4)"></div>
+                    </div>
+                    <div class="smple_box" onclick="validation()">
+                        <img id="smple_img">
+                        <p id="smple_p"></p>
+                    </div>
+					<div class="game_reload" onclick="location.reload()">شروع از ابتدا</div>
+                </div>
+            </div>
+        </div>
+        <script src="total/scripts/rules.js"></script>
+        <script src="total/scripts/data.js"></script>
+        <script src="total/scripts/ai.js"></script>
+    </body>
+</html>
+
+<!-- Create By countNico -->
