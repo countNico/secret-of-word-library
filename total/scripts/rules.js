@@ -31,8 +31,10 @@ function detectDevice() {
     }
     // بررسی ویژگی های CSS برای تشخیص دستگاه های لمسی
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    // بررسی ابعاد صفحه نمایش برای تشخیص موبایل یا تبلت
+    const isSmallScreen = window.innerWidth <= 800 && window.innerHeight <= 800;
     // اگر دستگاه لمسی باشد و userAgent موبایل را نشان دهد
-    if (isTouchDevice) {
+    if (isTouchDevice || isSmallScreen) {
         if (/mobile/i.test(userAgent)) {
             isComputer = false;
         } else if (/tablet/i.test(userAgent)) {
