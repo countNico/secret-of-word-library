@@ -5,6 +5,55 @@ window.onload = function() {
     document.getElementById("match_number").innerHTML = match_number;
 };
 
+// detect Device type that load the project
+function detectDevice() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    // بررسی دستگاه های iOS
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        isComputer = false;
+        return;
+    }
+    // بررسی دستگاه های اندرویدی
+    if (/android/i.test(userAgent)) {
+        if (/mobile/i.test(userAgent)) {
+            // موبایل اندروید
+            isComputer = false;
+        } else {
+            // تبلت اندروید
+            isComputer = false;
+        }
+        return;
+    }
+    // بررسی دستگاه های ویندوز
+    if (/windows phone/i.test(userAgent)) {
+        isComputer = false;
+        return;
+    }
+    // بررسی دستگاه های تبلت ویندوز
+    if (/windows nt/i.test(userAgent) && /touch/i.test(userAgent)) {
+        isComputer = false;
+        return;
+    }
+    // دستگاه دسکتاپ است
+    isComputer = true;
+    return;
+}
+
+// prevent the multi click on mobile device
+document.addEventListener("DOMContentLoaded", function() {
+    detectDevice();
+    if(!isComputer){
+        let plans = document.querySelectorAll(".table_plan");
+
+        plans.forEach(function(div) {
+            div.removeAttribute("onmousedown");
+            div.removeAttribute("onmouseup");
+            div.removeAttribute("onmouseleave");
+        });
+    }
+});
+
 // save setting data
 function save_data() {
     document.getElementById("othello").style.background = "linear-gradient(rgb(187, 58, 155), rgb(75, 52, 155))";
@@ -19,7 +68,7 @@ function plan_mouse_down(selected) {
     isHolding = true;
     TimeoutFunction = setTimeout(function() {
         if (isHolding) {
-            // hold action for 300ms detected
+            // hold action for 400ms detected
             Remove_plan(selected);
             isClickingOperation1 = false;
         }
