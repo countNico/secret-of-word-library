@@ -74,7 +74,12 @@ function plan_mouse_up(selected) {
         isHolding = false;
         if(isClickingOperation1){
             // click action detected
-            select_plan(selected);
+            if(!isComputer){
+                multi_click = !multi_click;
+            }
+            if(!multi_click){
+                select_plan(selected);
+            }
         }
         isClickingOperation1 = true;
     }
