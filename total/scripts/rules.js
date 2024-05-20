@@ -59,7 +59,7 @@ function plan_mouse_down(selected) {
     isHolding = true;
     TimeoutFunction = setTimeout(function() {
         if (isHolding) {
-            // hold action for 400ms detected
+            // hold action for 300ms detected
             Remove_plan(selected);
             isClickingOperation1 = false;
         }
