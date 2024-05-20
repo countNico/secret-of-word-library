@@ -5,6 +5,7 @@ const holdDuration1 = 400;
 var isClickingOperation1 = true;
 
 var isComputer = true;
+var multi_click = false;
 
 var plan_url = [
     { url: "url(./total/img/11.png)" },

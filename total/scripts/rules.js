@@ -43,15 +43,6 @@ function detectDevice() {
 // prevent the multi click on mobile device
 document.addEventListener("DOMContentLoaded", function() {
     detectDevice();
-    if(!isComputer){
-        let plans = document.querySelectorAll(".table_plan");
-
-        plans.forEach(function(div) {
-            div.removeAttribute("onmousedown");
-            div.removeAttribute("onmouseup");
-            div.removeAttribute("onmouseleave");
-        });
-    }
 });
 
 // save setting data
@@ -83,7 +74,12 @@ function plan_mouse_up(selected) {
         isHolding = false;
         if(isClickingOperation1){
             // click action detected
-            select_plan(selected);
+            if(!isComputer){
+                multi_click = !multi_click;
+            }
+            if(!multi_click){
+                select_plan(selected);
+            }
         }
         isClickingOperation1 = true;
     }
@@ -190,7 +186,8 @@ function validation(){
             table_plan_pos[index-1].plan = 0;
             table_plan_pos[index-1].rotate = 0;
             document.getElementsByClassName("pazzel_Item")[index-1].style.filter = "brightness(1)";
-            document.getElementsByClassName("table_plan")[index-1].style.backgroundImage = "";    
+            document.getElementsByClassName("table_plan")[index-1].style.backgroundImage = ""; 
+            document.getElementsByClassName("table_plan")[index-1].style.transform = "rotate(0)";   
         }
     }
 }
