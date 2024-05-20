@@ -40,6 +40,11 @@ function detectDevice() {
         }
         return;
     }
+    // بررسی لپ‌تاپ‌های لمسی
+    if (isTouchDevice && /windows nt/i.test(userAgent)) {
+        isComputer = true;
+        return;
+    }
     // دستگاه دسکتاپ است
     isComputer = true;
     return;
