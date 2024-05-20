@@ -1,7 +1,7 @@
 //onclick and hold variant
 var TimeoutFunction;
 var isHolding = false;
-const holdDuration1 = 450;
+const holdDuration1 = 250;
 var isClickingOperation1 = true;
 
 
