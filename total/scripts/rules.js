@@ -8,7 +8,6 @@ window.onload = function() {
 // detect Device type that load the project
 function detectDevice() {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
     // بررسی دستگاه های iOS
     if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
         isComputer = false;
@@ -25,14 +24,20 @@ function detectDevice() {
         }
         return;
     }
-    // بررسی دستگاه های ویندوز
+    // بررسی دستگاه های ویندوز فون
     if (/windows phone/i.test(userAgent)) {
         isComputer = false;
         return;
     }
-    // بررسی دستگاه های تبلت ویندوز
-    if (/windows nt/i.test(userAgent) && /touch/i.test(userAgent)) {
-        isComputer = false;
+    // بررسی ویژگی های CSS برای تشخیص دستگاه های لمسی
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    // اگر دستگاه لمسی باشد و userAgent موبایل را نشان دهد
+    if (isTouchDevice) {
+        if (/mobile/i.test(userAgent)) {
+            isComputer = false;
+        } else if (/tablet/i.test(userAgent)) {
+            isComputer = false;
+        }
         return;
     }
     // دستگاه دسکتاپ است
@@ -43,6 +48,12 @@ function detectDevice() {
 // prevent the multi click on mobile device
 document.addEventListener("DOMContentLoaded", function() {
     detectDevice();
+    const divs = document.querySelectorAll(".table_plan");
+    divs.forEach(function(div) {
+        div.removeAttribute("onmousedown");
+        div.removeAttribute("onmouseup");
+        div.removeAttribute("onmouseleave");
+    });
 });
 
 // save setting data
@@ -74,12 +85,7 @@ function plan_mouse_up(selected) {
         isHolding = false;
         if(isClickingOperation1){
             // click action detected
-            if(!isComputer){
-                multi_click = !multi_click;
-            }
-            if(!multi_click){
-                select_plan(selected);
-            }
+            select_plan(selected);
         }
         isClickingOperation1 = true;
     }
