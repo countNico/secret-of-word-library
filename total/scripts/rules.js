@@ -55,12 +55,14 @@ function detectDevice() {
 // prevent the multi click on mobile device
 document.addEventListener("DOMContentLoaded", function() {
     detectDevice();
-    const divs = document.querySelectorAll(".table_plan");
-    divs.forEach(function(div) {
-        div.removeAttribute("onmousedown");
-        div.removeAttribute("onmouseup");
-        div.removeAttribute("onmouseleave");
-    });
+	if(!isComputer){
+		const divs = document.querySelectorAll(".table_plan");
+		divs.forEach(function(div) {
+			div.removeAttribute("onmousedown");
+			div.removeAttribute("onmouseup");
+			div.removeAttribute("onmouseleave");
+		});
+	}
 });
 
 // save setting data
